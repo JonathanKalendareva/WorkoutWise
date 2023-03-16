@@ -19,4 +19,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
   },
+
+  //hello my name is jacka
 });
