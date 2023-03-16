@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeViewText, Image } from 'react-native';
+import { StyleSheet, Text, Image, View, SafeAreaView } from 'react-native';
 
 export default function App() {
   return (
-    <SafeViewText style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>fitnesstracker</Text>
       <StatusBar style="auto" />
       <Image source={require('./assets/goat.jpg')} />
-    </SafeViewText>
+    </SafeAreaView>
   );
 }
 
@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#552583',
     alignItems: 'center',
     justifyContent: 'center',
-
 
   },
 });
