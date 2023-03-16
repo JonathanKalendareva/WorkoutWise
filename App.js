@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, SafeViewText, Image } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <SafeViewText style={styles.container}>
       <Text>fitnesstracker</Text>
       <StatusBar style="auto" />
-    </View>
+      <Image />
+    </SafeViewText>
   );
 }
 
@@ -17,6 +18,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
 
-    
+
   },
 });
