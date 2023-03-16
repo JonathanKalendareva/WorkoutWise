@@ -6,7 +6,7 @@ export default function App() {
     <SafeViewText style={styles.container}>
       <Text>fitnesstracker</Text>
       <StatusBar style="auto" />
-      <Image />
+      <Image source={require('./assets/goat.jpg')} />
     </SafeViewText>
   );
 }
