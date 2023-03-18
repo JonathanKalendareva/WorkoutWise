@@ -1,19 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, View, SafeAreaView,Button} from 'react-native';
+import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity } from 'react-native';
 
 export default function App() {
   return (
+    // title and home image
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>fitnesstracker</Text>
+      <Text style={styles.title}>fitnesstracker™</Text>
       <Image
         style={styles.homeImage}
         source={require('./assets/goat.jpg')} />
-        <Button
-        title = 'Sign up'
-        style = {styles.signUp}></Button>
-        <Button
-        title = 'Login' 
-        style = {styles.loginButton}></Button>
+
+      <TouchableOpacity>
+        <View style={styles.signUpContainer}>
+          <Text style={styles.signUpText}>sign up</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <View style={styles.loginContainer}>
+          <Text style={styles.loginText}>login</Text>
+        </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -38,11 +45,33 @@ const styles = StyleSheet.create({
     height: 300,
     marginTop: 100,
   },
-  signUp: {
-    color : '#552583',
-  },
-  loginButton:{
-    color : '#FDB927',
 
+  signUpContainer: {
+    marginTop: 200,
+    backgroundColor: "#FDB927",
+    padding: 15,
+    alignItems: "center",
+    alignSelf: "center",
+    borderRadius: 10
+  },
+
+  signUpText: {
+    fontSize: 25,
+    color: "#552583",
+    fontWeight: "bold"
+  },
+
+  loginContainer: {
+    marginTop: 10,
+    backgroundColor: "#552583",
+    padding: 10,
+    alignItems: "center",
+  },
+
+  loginText: {
+    fontSize: 25,
+    color: "#FDB927",
+    fontWeight: "bold"
   }
-});
+}
+);
