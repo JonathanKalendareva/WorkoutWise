@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity,Dimensions } from 'react-native';
 
 export default function App() {
   return (
@@ -10,13 +10,13 @@ export default function App() {
         style={styles.homeImage}
         source={require('./assets/goat.jpg')} />
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={console.log(Dimensions.get('window').width)}>
         <View style={styles.signUpContainer}>
           <Text style={styles.signUpText}>sign up</Text>
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={console.log(Dimensions.get('window').height)}>
         <View style={styles.loginContainer}>
           <Text style={styles.loginText}>login</Text>
         </View>
@@ -24,6 +24,8 @@ export default function App() {
     </SafeAreaView>
   );
 }
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
