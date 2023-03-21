@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity,Dimensions } from 'react-native';
+import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio } from 'react-native';
 
 export default function App() {
   return (
@@ -24,8 +24,6 @@ export default function App() {
     </SafeAreaView>
   );
 }
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
@@ -35,30 +33,30 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    marginTop: 30,
+    marginTop: Dimensions.get('window').height / 31,
     color: '#FDB927',
     textAlign: 'center',
-    fontSize: 45,
+    fontSize: 40 / PixelRatio.getFontScale(),
     fontWeight: 'bold',
   },
 
   homeImage: {
     width: 350,
     height: 300,
-    marginTop: 100,
+    marginTop: Dimensions.get('window').height / 9.26,
   },
 
   signUpContainer: {
-    marginTop: 200,
     backgroundColor: "#FDB927",
     padding: 15,
     alignItems: "center",
     alignSelf: "center",
-    borderRadius: 10
+    borderRadius: 10,
+    marginTop: Dimensions.get('window').height / 6
   },
 
   signUpText: {
-    fontSize: 25,
+    fontSize: 25 / PixelRatio.getFontScale(),
     color: "#552583",
     fontWeight: "bold"
   },
@@ -67,11 +65,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: "#552583",
     padding: 10,
-    alignItems: "center",
+    bottom: 0
   },
 
   loginText: {
-    fontSize: 25,
+    fontSize: 25 / PixelRatio.getFontScale(),
     color: "#FDB927",
     fontWeight: "bold"
   }
