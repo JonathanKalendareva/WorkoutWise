@@ -1,29 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer} from 'react-native';
+import { StyleSheet, Text, Image, View, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer } from 'react-native';
 
-export default function LandingPage() {
+export default function LandingPage({ navigation }) {
   return (
     // title and home image
-    <NavigationContainer>
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>fitnesstracker™</Text>
       <Image
         style={styles.homeImage}
-        source={require('./assets/goat.jpg')} />
+        source={require('./goat.jpg')} />
 
-      <TouchableOpacity onPress={console.log(Dimensions.get('window').width)}>
+      <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
         <View style={styles.signUpContainer}>
           <Text style={styles.signUpText}>sign up</Text>
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={console.log(Dimensions.get('window').height)}>
-        <View style={styles.loginContainer}>
+      <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
+        < View style={styles.loginContainer} >
           <Text style={styles.loginText}>login</Text>
         </View>
-      </TouchableOpacity>
-    </SafeAreaView>
-    </NavigationContainer>
+      </TouchableOpacity >
+    </View >
   );
 }
 
