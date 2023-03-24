@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer } from 'react-native';
 
-export default function LandingPage({ navigation }) {
+export function LandingPage({ navigation }) {
   return (
-    // title and home image
     <View style={styles.container}>
       <Text style={styles.title}>fitnesstracker™</Text>
       <Image

@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer } from 'react-native';
 
-export default function SignUpPage() {
+export function SignUpPage() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>sign up page</Text>
