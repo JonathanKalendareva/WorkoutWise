@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, View, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer } from 'react-native';
+import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer } from 'react-native';
 
 export function LandingPage({ navigation }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>fitnesstracker™</Text>
       <Image
         style={styles.homeImage}
@@ -20,7 +20,7 @@ export function LandingPage({ navigation }) {
           <Text style={styles.loginText}>login</Text>
         </View>
       </TouchableOpacity >
-    </View >
+    </SafeAreaView >
   );
 }
 
