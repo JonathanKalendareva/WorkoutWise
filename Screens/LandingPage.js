@@ -11,7 +11,7 @@ export function LandingPage({ navigation }) {
 
       <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
         <View style={styles.signUpContainer}>
-          <Text style={styles.signUpText}>sign up</Text>
+          <Text style={styles.signUpText}>sign yup</Text>
         </View>
       </TouchableOpacity>
 
