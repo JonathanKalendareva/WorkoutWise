@@ -7,15 +7,15 @@ export function LandingPage({ navigation }) {
       <Text style={styles.title}>fitnesstracker™</Text>
       <Image
         style={styles.homeImage}
-        source={require('./goat.jpg')} />
+        source={require('../assets/goat.jpg')} />
 
       <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
         <View style={styles.signUpContainer}>
-          <Text style={styles.signUpText}>sign yup</Text>
+          <Text style={styles.signUpText}>sign up</Text>
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
+      <TouchableOpacity onPress={() => navigation.navigate("LoginPage")}>
         < View style={styles.loginContainer} >
           <Text style={styles.loginText}>login</Text>
         </View>
