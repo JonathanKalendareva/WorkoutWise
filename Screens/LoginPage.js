@@ -45,11 +45,11 @@ export function LoginPage() {
                 type="tertiary" />
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
-                <View style={{ width: 150, height: 1, backgroundColor: 'white' }} />
+                <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
                 <View>
                     <Text style={{ width: 50, textAlign: 'center', color: 'white' }}>OR</Text>
                 </View>
-                <View style={{ width: 150, height: 1, backgroundColor: 'white' }} />
+                <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
             </View>
 
             <View style={styles.container_row}>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     image: {
         height: Dimensions.get('window').height / 31.4159265358979,
         width: Dimensions.get('window').height / 31.4159265358979,
-        marginLeft: 95,
+        marginLeft: Dimensions.get('window').width / 4.45,
         marginRight: 5,
     },
 
