@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#361650',
         width: '85%',
+        height: 40,
 
         borderColor: '#E8E8E8',
         borderWidth: 1,
@@ -27,11 +28,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5,
         marginVertical: 7,
+        justifyContent: 'center',
+        alignItems: 'flex-start',
     },
     input: {
         color: 'white',
         fontSize: 20,
-        fontFamily: 'Arial'
+        fontFamily: 'Arial',
     }
 });
 

@@ -3,15 +3,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
-import { GoogleSVG } from '../assets/images/google.svg'
-import facebookSVG from '../assets/images/facebook.svg'
-import appleSVG from '../assets/images/apple.svg'
-
 
 export function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    /* hello */
     const onLogInPressed = () => {
         console.warn("Log In")
     }
@@ -19,8 +16,12 @@ export function LoginPage() {
     const onForgotPasswordPressed = () => {
         console.warn("Forgot Password")
     }
+
+
+
     return (
         <SafeAreaView style={styles.container}>
+            <View style={{ marginTop: 40 }} />
             <CustomInput
                 placeholder={"Username"}
                 value={username}
@@ -43,25 +44,38 @@ export function LoginPage() {
                 onPress={onForgotPasswordPressed}
                 type="tertiary" />
 
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
+                <View style={{ width: 150, height: 1, backgroundColor: 'white' }} />
+                <View>
+                    <Text style={{ width: 50, textAlign: 'center', color: 'white' }}>OR</Text>
+                </View>
+                <View style={{ width: 150, height: 1, backgroundColor: 'white' }} />
+            </View>
+
             <View style={styles.container_row}>
                 <TouchableOpacity style={styles.container_image}>
                     <Image
                         style={styles.image}
-                        source={require('../assets/images/google.svg')} />
+                        source={require('../assets/images/google.png')} />
                     <Text
+                        style={styles.text}
                         numberOfLines={1}>Log in with Google</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.container_image}>
                     <Image
                         style={styles.image}
-                        source={require('../assets/images/facebook.svg')} />
-                    <Text numberOfLines={1}>Log in with Facebook</Text>
+                        source={require('../assets/images/facebook.png')} />
+                    <Text
+                        style={styles.text}
+                        numberOfLines={1}>Log in with Facebook</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.container_image}>
                     <Image
                         style={styles.image}
-                        source={require('../assets/images/apple.svg')} />
-                    <Text numberOfLines={1}>Log in with Apple</Text>
+                        source={require('../assets/images/apple.png')} />
+                    <Text
+                        style={styles.text}
+                        numberOfLines={1}>Log in with Apple</Text>
                 </TouchableOpacity>
             </View>
 
@@ -79,21 +93,22 @@ const styles = StyleSheet.create({
     image: {
         height: Dimensions.get('window').height / 31.4159265358979,
         width: Dimensions.get('window').height / 31.4159265358979,
+        marginLeft: 95,
+        marginRight: 5,
     },
 
     container_image: {
-        backgroundColor: 'white',
+        backgroundColor: '#FDB927',
         marginLeft: Dimensions.get('window').height / 60,
         marginRight: Dimensions.get('window').height / 60,
         marginBottom: 10,
-
-        borderColor: '#000',
         borderRadius: 5,
-        borderWidth: 1.5,
 
         padding: 5,
         width: Dimensions.get('window').width / 1.22,
-        flexDirection: 'row'
+        flexDirection: 'row',
+
+        alignItems: 'center',
     },
 
     container_row: {
@@ -102,7 +117,9 @@ const styles = StyleSheet.create({
     },
 
     text: {
-
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: '#552583',
     }
 }
 );
