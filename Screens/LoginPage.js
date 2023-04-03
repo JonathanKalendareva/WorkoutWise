@@ -23,7 +23,7 @@ export function LoginPage() {
         <SafeAreaView style={styles.container}>
             <View style={{ marginTop: 40 }} />
             <CustomInput
-                placeholder={"Username"}
+                placeholder={"Email"}
                 value={username}
                 setValue={setUsername} />
             <CustomInput

@@ -9,10 +9,9 @@ export function SignUpPage() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>sign up page</Text>
-
+            <View style={{ marginTop: Dimensions.get('window').width / 17}} />
             <CustomInput
-                placeholder={"Username"}
+                placeholder={"Email"}
                 value={username}
                 setValue={setUsername} />
             <CustomInput
@@ -20,7 +19,49 @@ export function SignUpPage() {
                 value={password}
                 setValue={setPassword}
                 secureTextEntry />
+            <CustomInput
+                placeholder={"Confirm Password"}
+                value={password}
+                setValue={setPassword}
+                secureTextEntry />
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
+                <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
+                <View>
+                    <Text style={{ width: 50, textAlign: 'center', color: 'white' }}>OR</Text>
+                </View>
+                <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
+            </View>
+
+            <View style={styles.container_row}>
+                <TouchableOpacity style={styles.container_image}>
+                    <Image
+                        style={styles.image}
+                        source={require('../assets/images/google.png')} />
+                    <Text
+                        style={styles.text}
+                        numberOfLines={1}>Sign Up with Google</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.container_image}>
+                    <Image
+                        style={styles.image}
+                        source={require('../assets/images/facebook.png')} />
+                    <Text
+                        style={styles.text}
+                        numberOfLines={1}>Sign Up with Facebook</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.container_image}>
+                    <Image
+                        style={styles.image}
+                        source={require('../assets/images/apple.png')} />
+                    <Text
+                        style={styles.text}
+                        numberOfLines={1}>Sign Up with Apple</Text>
+                </TouchableOpacity>
+            </View>
+
         </SafeAreaView>
+
+        
     );
 }
 
@@ -31,13 +72,37 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    title: {
-        marginTop: Dimensions.get('window').height / 31,
-        color: '#FDB927',
-        textAlign: 'center',
-        fontSize: 40 / PixelRatio.getFontScale(),
-        fontWeight: 'bold',
+    image: {
+        height: Dimensions.get('window').height / 31.4159265358979,
+        width: Dimensions.get('window').height / 31.4159265358979,
+        marginLeft: Dimensions.get('window').width / 5,
+        marginRight: 5,
     },
+
+    container_image: {
+        backgroundColor: '#FDB927',
+        marginLeft: Dimensions.get('window').height / 60,
+        marginRight: Dimensions.get('window').height / 60,
+        marginBottom: 10,
+        borderRadius: 5,
+
+        padding: 5,
+        width: Dimensions.get('window').width / 1.22,
+        flexDirection: 'row',
+
+        alignItems: 'center',
+    },
+
+    container_row: {
+        flexDirection: 'column',
+        padding: 10,
+    },
+
+    text: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: '#552583',
+    }
 
 }
 );
