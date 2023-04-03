@@ -8,7 +8,9 @@ export function SignUpPage() {
     const [password, setPassword] = useState('');
 
     return (
+        
         <SafeAreaView style={styles.container}>
+            {/* Sign Up text boxes for Email, Passwords, and Confirm Password*/}
             <View style={{ marginTop: Dimensions.get('window').width / 17}} />
             <CustomInput
                 placeholder={"Email"}
@@ -24,6 +26,9 @@ export function SignUpPage() {
                 value={password}
                 setValue={setPassword}
                 secureTextEntry />
+
+                {/* White line before OR and White Line after */}
+
         <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
                 <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
                 <View>
@@ -31,6 +36,8 @@ export function SignUpPage() {
                 </View>
                 <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
             </View>
+
+            {/* Sign Up for Google, Facebook, and Apple */}
 
             <View style={styles.container_row}>
                 <TouchableOpacity style={styles.container_image}>
