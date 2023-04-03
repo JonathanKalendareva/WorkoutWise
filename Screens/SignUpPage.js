@@ -39,6 +39,7 @@ export function SignUpPage() {
                 </View>
                 <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
             </View>
+        </View>
 
             {/* Sign Up for Google, Facebook, and Apple */}
 
