@@ -4,11 +4,13 @@ import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, D
 export function LandingPage({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
+      {/* title and homescreen image */}
       <Text style={styles.title}>fitnesstracker™</Text>
       <Image
         style={styles.homeImage}
         source={require('../assets/goat.jpg')} />
 
+      {/* buttons to navigate to sign up and log in pages */}
       <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
         <View style={styles.signUpContainer}>
           <Text style={styles.signUpText}>sign up</Text>

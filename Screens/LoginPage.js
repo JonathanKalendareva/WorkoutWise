@@ -8,7 +8,7 @@ export function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    /* hello */
+    /* functions for button functionality*/
     const onLogInPressed = () => {
         console.warn("Log In")
     }
@@ -18,12 +18,14 @@ export function LoginPage() {
     }
 
 
-
     return (
         <SafeAreaView style={styles.container}>
+            {/* margin for the top of the page */}
             <View style={{ marginTop: 40 }} />
+
+            {/* inputs for typing in username and password */}
             <CustomInput
-                placeholder={"Email"}
+                placeholder={"Username"}
                 value={username}
                 setValue={setUsername} />
             <CustomInput
@@ -32,6 +34,7 @@ export function LoginPage() {
                 setValue={setPassword}
                 secureTextEntry />
 
+            {/* buttons for logging in and forgetting password */}
             <CustomButton
                 text="Log In"
                 onPress={onLogInPressed} />
@@ -44,6 +47,7 @@ export function LoginPage() {
                 onPress={onForgotPasswordPressed}
                 type="tertiary" />
 
+            {/* the -----OR----- visual */}
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
                 <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
                 <View>
@@ -52,6 +56,7 @@ export function LoginPage() {
                 <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
             </View>
 
+            {/* buttons for logging in with third party accounts */}
             <View style={styles.container_row}>
                 <TouchableOpacity style={styles.container_image}>
                     <Image

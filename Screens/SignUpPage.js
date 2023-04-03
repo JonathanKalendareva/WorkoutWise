@@ -9,7 +9,8 @@ export function SignUpPage() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{ marginTop: Dimensions.get('window').width / 17}} />
+            <View style={{ marginTop: Dimensions.get('window').width / 17 }} />
+
             <CustomInput
                 placeholder={"Email"}
                 value={username}
@@ -24,7 +25,8 @@ export function SignUpPage() {
                 value={password}
                 setValue={setPassword}
                 secureTextEntry />
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
+
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
                 <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
                 <View>
                     <Text style={{ width: 50, textAlign: 'center', color: 'white' }}>OR</Text>
@@ -60,8 +62,6 @@ export function SignUpPage() {
             </View>
 
         </SafeAreaView>
-
-        
     );
 }
 

@@ -10,6 +10,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+      {/* main navigator with screen options */}
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
@@ -21,6 +22,7 @@ export default function App() {
           },
         }}
       >
+        {/* different screens */}
         <Stack.Screen
           name="LandingPage"
           component={LandingPage}
