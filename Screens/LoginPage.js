@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     image: {
         height: Dimensions.get('window').height / 31.4159265358979,
         width: Dimensions.get('window').height / 31.4159265358979,
-        marginLeft: Dimensions.get('window').width / 4.45,
+        marginLeft: Dimensions.get('window').width / 5,
         marginRight: 5,
     },
 
