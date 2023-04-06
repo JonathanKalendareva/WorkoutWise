@@ -3,43 +3,39 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import CustomInput from '../src/components/customInput';
 
-export function SignUpPage() {
+export function SignUpPage({ navigation }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     return (
-        
+
         <SafeAreaView style={styles.container}>
             {/* Sign Up text boxes for Email, Passwords, and Confirm Password*/}
-            <View style={{ marginTop: Dimensions.get('window').width / 17}} />
+            <View style={{ marginTop: Dimensions.get('window').width / 17 }} />
             <View style={{ marginTop: Dimensions.get('window').width / 17 }} />
 
             <CustomInput
+                name="username"
                 placeholder={"Email"}
-                value={username}
-                setValue={setUsername} />
+                control={control}
+            />
             <CustomInput
-                placeholder={"Password"}
-                value={password}
-                setValue={setPassword}
-                secureTextEntry />
-            <CustomInput
-                placeholder={"Confirm Password"}
-                value={password}
-                setValue={setPassword}
-                secureTextEntry />
+                name="password"
+                placeholder={"password"}
+                control={control}
+            />
 
-                {/* White line before OR and White Line after */}
+            {/* White line before OR and White Line after */}
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
-                <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
-                <View>
-                    <Text style={{ width: 50, textAlign: 'center', color: 'white' }}>OR</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15, marginTop: 15 }}>
+                    <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
+                    <View>
+                        <Text style={{ width: 50, textAlign: 'center', color: 'white' }}>OR</Text>
+                    </View>
+                    <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
                 </View>
-                <View style={{ width: Dimensions.get('window').width / 2.84, height: 1, backgroundColor: 'white' }} />
             </View>
-        </View>
 
             {/* Sign Up for Google, Facebook, and Apple */}
 

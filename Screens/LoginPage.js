@@ -3,20 +3,24 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
+import { useForm, Controller } from 'react-hook-form'
 
 export function LoginPage() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+
+    const { control, handleSubmit } = useForm();
 
     /* functions for button functionality*/
-    const onLogInPressed = () => {
-        console.warn("Log In")
+    const onLogInPressed = (data) => {
+        console.log(data)
     }
 
     const onForgotPasswordPressed = () => {
         console.warn("Forgot Password")
     }
 
+    const onSignUpPressed = () => {
+        navigation.navigate('SignUp')
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -25,26 +29,27 @@ export function LoginPage() {
 
             {/* inputs for typing in username and password */}
             <CustomInput
+                name="username"
                 placeholder={"Username"}
-                value={username}
-                setValue={setUsername} />
+                control={control}
+            />
             <CustomInput
+                name="password"
                 placeholder={"Password"}
-                value={password}
-                setValue={setPassword}
+                control={control}
                 secureTextEntry />
 
             {/* buttons for logging in and forgetting password */}
             <CustomButton
                 text="Log In"
-                onPress={onLogInPressed} />
+                onPress={handleSubmit(onLogInPressed)} />
             <CustomButton
                 text="Forgot Password?"
                 onPress={onForgotPasswordPressed}
                 type="tertiary" />
             <CustomButton
                 text="Don't have an account? Create one :)"
-                onPress={onForgotPasswordPressed}
+                onPress={onSignUpPressed}
                 type="tertiary" />
 
             {/* the -----OR----- visual */}
