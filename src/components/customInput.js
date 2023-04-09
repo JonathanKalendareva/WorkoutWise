@@ -1,25 +1,36 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native'
 import { Controller } from 'react-hook-form'
 
-const CustomInput = ({ control, name, placeholder, secureTextEntry }) => {
+const temp = Dimensions.get('window').width / 13.3;
+
+const CustomInput = ({ control, name, rules = {}, placeholder, secureTextEntry }) => {
+
     return (
-        <View style={styles.container}>
-            <Controller
-                control={control}
-                name={name}
-                render={({ field: { value, onChange, onBlur } }) => (
-                    <TextInput
-                        value={value}
-                        onChangeText={onChange}
-                        onBlur={onBlur}
-                        placeholder={placeholder}
-                        style={styles.input}
-                        secureTextEntry={secureTextEntry}
-                    />
-                )}
-            />
-        </View>
+        <Controller
+            control={control}
+            name={name}
+            rules={rules}
+            render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
+                <>
+                    <View
+                        style={[styles.container,
+                        { borderColor: error ? 'red' : '#E8E8E8' }]}>
+                        <TextInput
+                            value={value}
+                            onChangeText={onChange}
+                            onBlur={onBlur}
+                            placeholder={placeholder}
+                            placeholderTextColor="#A5A5A5"
+                            style={styles.input}
+                            secureTextEntry={secureTextEntry}
+                        />
+                    </View>
+                    {error && (
+                        <Text style={styles.err_msg}>{error.message || 'Error'}</Text>)}
+                </>
+            )}
+        />
     )
 }
 
@@ -29,7 +40,6 @@ const styles = StyleSheet.create({
         width: '85%',
         height: 40,
 
-        borderColor: '#E8E8E8',
         borderWidth: 1,
         borderRadius: 5,
 
@@ -37,12 +47,18 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         marginVertical: 7,
         justifyContent: 'center',
-        alignItems: 'flex-start',
+
     },
     input: {
         color: 'white',
         fontSize: 20,
         fontFamily: 'Arial',
+    },
+    err_msg: {
+        color: 'red',
+        alignSelf: 'stretch',
+        marginLeft: temp,
+
     }
 });
 

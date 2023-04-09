@@ -7,7 +7,9 @@ import { useForm, Controller } from 'react-hook-form'
 
 export function LoginPage() {
 
-    const { control, handleSubmit } = useForm();
+    const { control, handleSubmit, formState: { errors } } = useForm();
+
+    console.log(errors)
 
     /* functions for button functionality*/
     const onLogInPressed = (data) => {
@@ -27,16 +29,24 @@ export function LoginPage() {
             {/* margin for the top of the page */}
             <View style={{ marginTop: 40 }} />
 
-            {/* inputs for typing in username and password */}
+            {/* inputs for typing in email and password */}
             <CustomInput
-                name="username"
-                placeholder={"Username"}
+                name="email"
+                placeholder={"Email"}
                 control={control}
+                rules={{
+                    required: 'Email is required',
+                    pattern: {
+                        value: /^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/,
+                        message: 'Invalid email address'
+                    }
+                }}
             />
             <CustomInput
                 name="password"
                 placeholder={"Password"}
                 control={control}
+                rules={{ required: 'Password is required' }}
                 secureTextEntry />
 
             {/* buttons for logging in and forgetting password */}

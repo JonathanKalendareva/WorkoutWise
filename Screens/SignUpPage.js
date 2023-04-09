@@ -2,28 +2,64 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import CustomInput from '../src/components/customInput';
+import CustomButton from '../src/components/CustomButton';
+import { useForm, Controller } from 'react-hook-form'
+import { useNavigation } from '@react-navigation/native';
 
 export function SignUpPage({ navigation }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const { control, handleSubmit, watch } = useForm();
+    const pwd = watch('password')
+    const navigation = useNavigation();
+
+    const onSignUpPressed = () => {
+        console.warn("Sign Up Pressed")
+    }
 
     return (
-
         <SafeAreaView style={styles.container}>
             {/* Sign Up text boxes for Email, Passwords, and Confirm Password*/}
             <View style={{ marginTop: Dimensions.get('window').width / 17 }} />
             <View style={{ marginTop: Dimensions.get('window').width / 17 }} />
 
             <CustomInput
-                name="username"
+                name="email"
                 placeholder={"Email"}
                 control={control}
+                secureTextEntry
+                rules={{
+                    required: 'Email is required',
+                    pattern: {
+                        value: /^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,}$/,
+                        message: 'Invalid email address'
+                    }
+                }}
             />
             <CustomInput
                 name="password"
-                placeholder={"password"}
+                placeholder={"Password"}
                 control={control}
+                secureTextEntry
+                rules={{
+                    required: 'Password is required',
+                    pattern: {
+                        value: /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{4,16}$/,
+                        message: 'Invalid email address'
+                    }
+                }}
             />
+            <CustomInput
+                name="confirm_password"
+                placeholder={"Confirm Password"}
+                control={control}
+                rules={{
+                    validate: value => value === pwd || 'Passwords do not match'
+                }
+                }
+            />
+
+            <CustomButton
+                text="Sign Up"
+                onPress={handleSubmit(onSignUpPressed)} />
 
             {/* White line before OR and White Line after */}
 
