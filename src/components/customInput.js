@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Dimensions, Image } from 'react-native'
 import { Controller } from 'react-hook-form'
 
 const temp = Dimensions.get('window').width / 13.3;
@@ -25,6 +25,12 @@ const CustomInput = ({ control, name, rules = {}, placeholder, secureTextEntry }
                             style={styles.input}
                             secureTextEntry={secureTextEntry}
                         />
+                        {secureTextEntry && (
+                            <Image
+                                style={styles.image}
+                                source={require('../../assets/images/password_vis.png'
+                                )}
+                            />)}
                     </View>
                     {error && (
                         <Text style={styles.err_msg}>{error.message || 'Error'}</Text>)}
@@ -58,8 +64,14 @@ const styles = StyleSheet.create({
         color: 'red',
         alignSelf: 'stretch',
         marginLeft: temp,
+    },
+    image: {
+        height: Dimensions.get('window').height / 31.4159265358979,
+        width: Dimensions.get('window').height / 31.4159265358979,
+        marginLeft: Dimensions.get('window').width / 5,
+        marginRight: 5,
+    },
 
-    }
 });
 
 export default CustomInput;

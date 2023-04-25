@@ -6,7 +6,7 @@ import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation } from '@react-navigation/native';
 
-export function SignUpPage({ navigation }) {
+export function SignUpPage() {
     const { control, handleSubmit, watch } = useForm();
     const pwd = watch('password')
     const navigation = useNavigation();
@@ -25,7 +25,6 @@ export function SignUpPage({ navigation }) {
                 name="email"
                 placeholder={"Email"}
                 control={control}
-                secureTextEntry
                 rules={{
                     required: 'Email is required',
                     pattern: {
@@ -42,15 +41,21 @@ export function SignUpPage({ navigation }) {
                 rules={{
                     required: 'Password is required',
                     pattern: {
-                        value: /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{4,16}$/,
-                        message: 'Invalid email address'
-                    }
+                        value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                        message: 'Password must: \
+                                    \nContain at least one uppercase\
+                                    \nContain at least one lowercase\
+                                    \nContain at least one positive integer\
+                                    \nContain at least one special character\
+                                    \nBe at least 8 characters long'
+                    },
                 }}
             />
             <CustomInput
                 name="confirm_password"
                 placeholder={"Confirm Password"}
                 control={control}
+                secureTextEntry
                 rules={{
                     validate: value => value === pwd || 'Passwords do not match'
                 }
