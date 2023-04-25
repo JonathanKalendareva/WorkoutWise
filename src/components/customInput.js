@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5,
         marginVertical: 7,
-        justifyContent: 'center',
+        flexDirection: 'row',
 
     },
     input: {
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     image: {
         height: Dimensions.get('window').height / 31.4159265358979,
         width: Dimensions.get('window').height / 31.4159265358979,
-        marginLeft: Dimensions.get('window').width / 5,
-        marginRight: 5,
+        end: -195
+        
     },
 
 });
