@@ -5,7 +5,7 @@ import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
 
-export function LoginPage() {
+export function LoginPage({ navigation }) {
 
     const { control, handleSubmit, formState: { errors } } = useForm();
 
@@ -21,7 +21,7 @@ export function LoginPage() {
     }
 
     const onSignUpPressed = () => {
-        navigation.navigate('SignUp')
+        navigation.navigate("SignUpPage")
     }
 
     return (
