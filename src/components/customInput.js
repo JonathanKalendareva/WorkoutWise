@@ -52,13 +52,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5,
         marginVertical: 7,
-        flexDirection: 'row',
-
+        flexDirection: 'row', // Added
+        justifyContent: 'space-between', // Added
     },
+
     input: {
         color: 'white',
         fontSize: 20,
         fontFamily: 'Arial',
+        flex: 1, // Added
     },
     err_msg: {
         color: 'red',
@@ -68,8 +70,6 @@ const styles = StyleSheet.create({
     image: {
         height: Dimensions.get('window').height / 31.4159265358979,
         width: Dimensions.get('window').height / 31.4159265358979,
-        end: -195
-        
     },
 
 });
