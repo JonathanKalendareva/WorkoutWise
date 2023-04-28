@@ -8,7 +8,7 @@ export function LandingPage({ navigation }) {
       <Text style={styles.title}>fitnesstracker™</Text>
       <Image
         style={styles.homeImage}
-        source={require('../assets/goat.jpg')} />
+        source={require('../assets/images/temp3.png')} />
 
       {/* buttons to navigate to sign up and log in pages */}
       <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
@@ -42,9 +42,7 @@ const styles = StyleSheet.create({
   },
 
   homeImage: {
-    width: 350,
-    height: 300,
-    marginTop: Dimensions.get('window').height / 9.26,
+    marginTop: Dimensions.get('window').height / 45,
   },
 
   signUpContainer: {
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     borderRadius: 10,
-    marginTop: Dimensions.get('window').height / 6
+    marginTop: Dimensions.get('window').height / 20
   },
 
   signUpText: {
