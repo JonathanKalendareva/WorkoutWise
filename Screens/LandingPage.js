@@ -8,7 +8,7 @@ export function LandingPage({ navigation }) {
       <Text style={styles.title}>fitnesstracker™</Text>
       <Image
         style={styles.homeImage}
-        source={require('../assets/images/temp3.png')} />
+        source={require('../assets/images/chapter2.png')} />
 
       {/* buttons to navigate to sign up and log in pages */}
       <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
