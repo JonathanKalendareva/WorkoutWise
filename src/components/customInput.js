@@ -29,7 +29,8 @@ const CustomInput = ({ control, name, rules = {}, placeholder, secureTextEntry }
                             placeholder={placeholder}
                             placeholderTextColor="#A5A5A5"
                             style={styles.input}
-                            secureTextEntry={showPassword}
+                            secureTextEntry={secureTextEntry ? showPassword : false}
+                        
                         />
                         {secureTextEntry && (
                             <TouchableOpacity onPress={togglePassword}>

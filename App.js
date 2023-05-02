@@ -4,8 +4,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LandingPage } from './Screens/LandingPage';
 import { SignUpPage } from './Screens/SignUpPage';
 import { LoginPage } from './Screens/LoginPage';
+import {Amplify} from 'aws-amplify';
+import config from './src/aws-exports';
+
+Amplify.configure(config);
 
 const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
