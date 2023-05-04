@@ -8,7 +8,7 @@ account.
 ## Installation
 
 ```r
-git clone https://github.com/JonathanKalendareva/fitnesstracker
+git clone https://github.com/JonathanKalendareva/WorkoutWise
 cd fitnesstracker
 npm install
 npm start
