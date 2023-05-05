@@ -9,7 +9,7 @@ account.
 
 ```r
 git clone https://github.com/JonathanKalendareva/WorkoutWise
-cd fitnesstracker
+cd WorkoutWise
 npm install
 npm start
 ```
