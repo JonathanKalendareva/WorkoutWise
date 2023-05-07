@@ -4,18 +4,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LandingPage } from './Screens/LandingPage';
 import { SignUpPage } from './Screens/SignUpPage';
 import { LoginPage } from './Screens/LoginPage';
-import {Amplify} from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react-native'
 import config from './src/aws-exports';
 
 Amplify.configure(config);
 
-const Stack = createNativeStackNavigator();
+{/* const Stack = createNativeStackNavigator(); */ }
 
-
-export default function App() {
+const App = () => {
   return (
+
+
+    {/* 
     <NavigationContainer>
-      {/* main navigator with screen options */}
+      {/* main navigator with screen options 
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
@@ -27,7 +30,7 @@ export default function App() {
           },
         }}
       >
-        {/* different screens */}
+        {/* different screens 
         <Stack.Screen
           name="LandingPage"
           component={LandingPage}
@@ -46,8 +49,13 @@ export default function App() {
           options={{
             title: 'Log In',
           }}
-        />
+        /> 
       </Stack.Navigator>
     </NavigationContainer>
+ */}
+
   );
 };
+
+
+export default withAuthenticator(App);
