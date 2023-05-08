@@ -4,7 +4,7 @@ import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, D
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Auth } from 'aws-amplify';
 
@@ -12,28 +12,32 @@ async function signUp(
     email = string,
     password = string,
 ) {
-  try {
-    const { user } = await Auth.signUp({
-      email,
-      password,
-      
-      autoSignIn: { // optional - enables auto sign in after user is confirmed
-        enabled: true,
-      }
-    });
-    console.log(user);
-  } catch (error) {
-    console.log('error signing up:', error);
-  }
+    try {
+        const { user } = await Auth.signUp({
+            username: email,
+            password,
+            attributes: {
+                email,
+            },
+            autoSignIn: { // optional - enables auto sign in after user is confirmed
+                enabled: true,
+            }
+        });
+        console.log(user);
+    } catch (error) {
+        console.log('error signing up:', error);
+    }
 }
 
 export function SignUpPage() {
-    const { control, handleSubmit, watch } = useForm();
-    const pwd = watch('password')
+    const route = useRoute();
+
+    const { control, handleSubmit, formState: { errors } } = useForm();
     const navigation = useNavigation();
 
-    const onSignUpPressed = () => {
-        console.warn("Sign Up Pressed")
+    async function onSubmit(data) {
+        const user = await signUp(data.email, data.password)
+        console.log(data);
     }
 
     return (
@@ -54,6 +58,7 @@ export function SignUpPage() {
                     }
                 }}
             />
+
             <CustomInput
                 name="password"
                 placeholder={"Password"}
@@ -75,7 +80,7 @@ export function SignUpPage() {
 
             <CustomButton
                 text="Sign Up"
-                onPress={handleSubmit(onSignUpPressed)} />
+                onPress={handleSubmit(onSubmit)} />
 
             {/* White line before OR and White Line after */}
 
