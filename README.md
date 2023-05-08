@@ -13,4 +13,3 @@ cd WorkoutWise
 npm install
 npm start
 ```
-
