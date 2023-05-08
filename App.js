@@ -6,9 +6,9 @@ import { SignUpPage } from './Screens/SignUpPage';
 import { LoginPage } from './Screens/LoginPage';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native'
-import config from './src/aws-exports';
+import awsconfig from '/aws-exports'
 
-Amplify.configure(config);
+Amplify.configure(awsconfig);
 
 {/* const Stack = createNativeStackNavigator(); */ }
 
