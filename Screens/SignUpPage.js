@@ -6,6 +6,27 @@ import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation } from '@react-navigation/native';
 
+import { Auth } from 'aws-amplify';
+
+async function signUp(
+    email = string,
+    password = string,
+) {
+  try {
+    const { user } = await Auth.signUp({
+      email,
+      password,
+      
+      autoSignIn: { // optional - enables auto sign in after user is confirmed
+        enabled: true,
+      }
+    });
+    console.log(user);
+  } catch (error) {
+    console.log('error signing up:', error);
+  }
+}
+
 export function SignUpPage() {
     const { control, handleSubmit, watch } = useForm();
     const pwd = watch('password')
@@ -50,16 +71,6 @@ export function SignUpPage() {
                                     \nBe at least 8 characters long'
                     },
                 }}
-            />
-            <CustomInput
-                name="confirm_password"
-                placeholder={"Confirm Password"}
-                control={control}
-                secureTextEntry
-                rules={{
-                    validate: value => value === pwd || 'Passwords do not match'
-                }
-                }
             />
 
             <CustomButton
