@@ -8,7 +8,6 @@ import { useForm, Controller } from 'react-hook-form'
 export function LoginPage({ navigation }) {
 
     const { control, handleSubmit, formState: { errors } } = useForm();
-
     console.log(errors)
 
     /* functions for button functionality*/
