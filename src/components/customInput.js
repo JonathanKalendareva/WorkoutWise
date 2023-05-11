@@ -12,6 +12,7 @@ const CustomInput = ({ control, name, rules = {}, placeholder, secureTextEntry }
     const togglePassword = () => {
         setShowPassword(!showPassword)
     }
+    
     return (
         <Controller
             control={control}
