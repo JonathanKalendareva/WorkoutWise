@@ -8,10 +8,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Auth } from 'aws-amplify';
 
-async function signUp(
-    email = string,
-    password = string,
-) {
+async function signUp( email = string, password = string ) {
     try {
         const { user } = await Auth.signUp({
             username: email,
@@ -19,33 +16,32 @@ async function signUp(
             attributes: {
                 email,
             },
-            autoSignIn: { // optional - enables auto sign in after user is confirmed
+            autoSignIn: { 
                 enabled: true,
             }
         });
-        console.log(user);
+        console.log('successfully signed up:', email)
+        return user;
     } catch (error) {
-        console.log('error signing up:', error);
+        console.warn('Email already exists');
+        throw error;
     }
 }
 
 export function SignUpPage() {
-    const route = useRoute();
-
     const { control, handleSubmit, formState: { errors } } = useForm();
     const navigation = useNavigation();
 
     async function onSubmit(data) {
         try {
-            const user = await signUp(data.email, data.password);
-            console.log(user);
+            await signUp(data.email, data.password);
             navigation.navigate("ConfirmationPage");
         } catch (error) {
             console.log(error);
         }
     }
-    
-    return (
+ 
+    return (    
         <SafeAreaView style={styles.container}>
             {/* Sign Up text boxes for Email, Passwords, and Confirm Password*/}
             <View style={{ marginTop: Dimensions.get('window').width / 17 }} />
