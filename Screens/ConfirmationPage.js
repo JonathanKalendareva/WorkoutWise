@@ -5,6 +5,7 @@ import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation, useRoute } from '@react-navigation/native';
+import {Auth} from 'aws-amplify';
 
 export function ConfirmationPage(){
     const { control, handleSubmit, formState: { errors } } = useForm();
@@ -12,21 +13,37 @@ export function ConfirmationPage(){
     const navigation = useNavigation();
 
     /* functions for button functionality*/
-    const onConfirmPressed = () => {
-        console.log("confirm pressed")
+    const onConfirmPressed = async data => {
+        try{
+           const response =  await Auth.confirmSignUp(data.code);
+           console.log(response);
+        } catch(e) {
+            Alert.alert("Oops", e.message);
+        }
+
     }
 
     const onResendCodePressed = () => {
         console.log("pressed resend code")
     }
 
-    const onBackToSignIn = () => {
-        navigation.navigate("SignUpPage")
-    }
-
     return(
         <SafeAreaView style={styles.container}>
-            <Text>Confirm Your Email</Text>
+            <CustomInput
+                name="Confirmation Code"
+                placeholder={"Confirmation Code"}
+                control={control}
+                rules={{
+                    required: 'Confirmation Code',
+                    pattern: {
+                        value: /^[0-9]{1,6}$/,
+                        message: 'Invalid Confirmation Code'
+                    }
+                }}
+            />
+            <CustomButton
+                text="Confirmed"
+                onPress={onConfirmPressed} />
         </SafeAreaView>
     );
 }
