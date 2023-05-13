@@ -5,7 +5,6 @@ import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation, useRoute } from '@react-navigation/native';
-
 import { Auth } from 'aws-amplify';
 
 
@@ -23,7 +22,7 @@ export function SignUpPage() {
     
     async function signUp( email = string, password = string ) {
         try {
-            const { user } = await Auth.signUp({
+            const user  = await Auth.signUp({ //took brackets off of user
                 username: email,
                 password,
                 attributes: {
@@ -34,7 +33,7 @@ export function SignUpPage() {
                 }
             });
             console.log('successfully signed up:', email)
-            navigation.navigate("ConfirmationPage", {username});
+            navigation.navigate("ConfirmationPage", {email});
             return user;
         } catch (error) {
             console.warn('Email already exists');
