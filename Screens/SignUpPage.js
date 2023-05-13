@@ -8,39 +8,40 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Auth } from 'aws-amplify';
 
-async function signUp( email = string, password = string ) {
-    try {
-        const { user } = await Auth.signUp({
-            username: email,
-            password,
-            attributes: {
-                email,
-            },
-            autoSignIn: { 
-                enabled: true,
-            }
-        });
-        console.log('successfully signed up:', email)
-        return user;
-    } catch (error) {
-        console.warn('Email already exists');
-        throw error;
-    }
-}
 
 export function SignUpPage() {
     const { control, handleSubmit, formState: { errors } } = useForm();
     const navigation = useNavigation();
-
+    
     async function onSubmit(data) {
         try {
             await signUp(data.email, data.password);
-            navigation.navigate("ConfirmationPage");
         } catch (error) {
             console.log(error);
         }
     }
- 
+    
+    async function signUp( email = string, password = string ) {
+        try {
+            const { user } = await Auth.signUp({
+                username: email,
+                password,
+                attributes: {
+                    email,
+                },
+                autoSignIn: { 
+                    enabled: true,
+                }
+            });
+            console.log('successfully signed up:', email)
+            navigation.navigate("ConfirmationPage", {username});
+            return user;
+        } catch (error) {
+            console.warn('Email already exists');
+            throw error;
+        }
+    }
+    
     return (    
         <SafeAreaView style={styles.container}>
             {/* Sign Up text boxes for Email, Passwords, and Confirm Password*/}
