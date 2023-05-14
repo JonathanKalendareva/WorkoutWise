@@ -22,7 +22,7 @@ export function SignUpPage() {
     
     async function signUp( email = string, password = string ) {
         try {
-            const user  = await Auth.signUp({ //took brackets off of user
+            const {user}  = await Auth.signUp({ //took brackets off of user
                 username: email,
                 password,
                 attributes: {
