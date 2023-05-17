@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
@@ -25,33 +24,44 @@ export function ConfirmationPage() {
     }
   };
 
-  const onResendCodePressed = () => {
-    console.log("pressed resend code");
-  };
+const onResendCodePressed = async () => {
+    try {
+      const {email} = route.params;
+      await Auth.resendSignUp(email);
+    } catch (err) {
+      setError(err.message);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <CustomInput
         name="username"
-        placeholder={"Username"}
-        control={control}
+        placeholder="Username"
+        control={control} // Pass the `control` prop correctly
         rules={{
           required: 'Username is required',
         }}
       />
+
       <CustomInput
-  name="code" // Added code field
-  placeholder={"Confirmation code"}
-  control={control}
-  rules={{
-    required: 'Confirmation code is required',
-  }}
-/>
+        name="code"
+        placeholder="Confirmation code"
+        control={control} // Pass the `control` prop correctly
+        rules={{
+          required: 'Confirmation code is required',
+        }}
+      />
 
       <CustomButton
         text="Confirmed"
         onPress={handleSubmit(onConfirmPressed)}
       />
+      <CustomButton
+        text="Resend Code"
+        onPress={onResendCodePressed}
+/>
+
     </SafeAreaView>
   );
 }
