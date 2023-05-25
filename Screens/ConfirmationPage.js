@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
 
-export function ConfirmationPage() {
-  const route = useRoute();
+
+export function ConfirmationPage({route}) {
+  const {email} = route.params;
   const { control, handleSubmit } = useForm({
-    defaultValues: { email: route.params?.email },
+    defaultValues: { email },
   });
   const navigation = useNavigation();
 
@@ -26,7 +27,6 @@ export function ConfirmationPage() {
 
 const onResendCodePressed = async () => {
     try {
-      const {email} = route.params;
       await Auth.resendSignUp(email);
     } catch (err) {
       setError(err.message);
@@ -36,8 +36,8 @@ const onResendCodePressed = async () => {
   return (
     <SafeAreaView style={styles.container}>
       <CustomInput
-        name="username"
-        placeholder="Username"
+        name = {email}
+        placeholder="Email"
         control={control} // Pass the `control` prop correctly
         rules={{
           required: 'Username is required',

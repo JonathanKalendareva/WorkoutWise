@@ -20,7 +20,7 @@ export function LoginPage({ navigation }) {
     }
 
     const onSignUpPressed = () => {
-        navigation.navigate("SignUpPage")
+        navigation.navigate("SignUpPage", { data: 'Email' })
     }
 
     return (
