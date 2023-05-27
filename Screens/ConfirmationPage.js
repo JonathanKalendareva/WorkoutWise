@@ -39,14 +39,15 @@ export function ConfirmationPage() {
           required: 'Username is required',
         }}
       />
+
       <CustomInput
-  name="code" // Added code field
-  placeholder={"Confirmation code"}
-  control={control}
-  rules={{
-    required: 'Confirmation code is required',
-  }}
-/>
+        name="code" // Added code field
+        placeholder={"Confirmation code"}
+        control={control}
+        rules={{
+          required: 'Confirmation code is required',
+        }}
+      />
 
       <CustomButton
         text="Confirmed"

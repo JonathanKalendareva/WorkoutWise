@@ -15,7 +15,6 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-
     <NavigationContainer>
       {/* main navigator with screen options */}
       <Stack.Navigator
@@ -58,6 +57,5 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-
   );
 };
