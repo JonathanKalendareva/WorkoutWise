@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
 
-export function ConfirmationPage() {
-  const route = useRoute();
+
+export function ConfirmationPage({route}) {
+  const {email} = route.params;
   const { control, handleSubmit } = useForm({
-    defaultValues: { email: route.params?.email },
+    defaultValues: { email },
   });
   const navigation = useNavigation();
 
@@ -25,25 +25,29 @@ export function ConfirmationPage() {
     }
   };
 
-  const onResendCodePressed = () => {
-    console.log("pressed resend code");
-  };
+const onResendCodePressed = async () => {
+    try {
+      await Auth.resendSignUp(email);
+    } catch (err) {
+      setError(err.message);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <CustomInput
-        name="username"
-        placeholder={"Username"}
-        control={control}
+        name = {email}
+        placeholder="Email"
+        control={control} // Pass the `control` prop correctly
         rules={{
           required: 'Username is required',
         }}
       />
 
       <CustomInput
-        name="code" // Added code field
-        placeholder={"Confirmation code"}
-        control={control}
+        name="code"
+        placeholder="Confirmation code"
+        control={control} // Pass the `control` prop correctly
         rules={{
           required: 'Confirmation code is required',
         }}
@@ -53,6 +57,11 @@ export function ConfirmationPage() {
         text="Confirmed"
         onPress={handleSubmit(onConfirmPressed)}
       />
+      <CustomButton
+        text="Resend Code"
+        onPress={onResendCodePressed}
+/>
+
     </SafeAreaView>
   );
 }
