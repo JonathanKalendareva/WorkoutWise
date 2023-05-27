@@ -4,6 +4,7 @@ import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, D
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
+import { Auth } from 'aws-amplify';
 
 export function LoginPage({ navigation }) {
 
@@ -14,14 +15,23 @@ export function LoginPage({ navigation }) {
     const onLogInPressed = (data) => {
         console.log(data)
     }
+    
+    async function signIn() {
+  try {
+    const user = await Auth.signIn(username, password);
+  } catch (error) {
+    console.log('error signing in', error);
+  }
+}
 
     const onForgotPasswordPressed = () => {
-        console.warn("Forgot Password")
+        navigation.navigate("ForgetPassword");
     }
 
     const onSignUpPressed = () => {
         navigation.navigate("SignUpPage", { data: 'Email' })
     }
+    
 
     return (
         <SafeAreaView style={styles.container}>
