@@ -55,6 +55,20 @@ export default function App() {
             title: 'Confirmation Page',
           }}
         />
+         <Stack.Screen
+          name="ForgetPassword"
+          component={ForgetPassword}
+          options={{
+            title: 'Forget Password',
+          }}
+          />
+          <Stack.Screen
+          name="NewPasswordScreen"
+          component={NewPasswordScreen}
+          options={{
+            title: 'New Password',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
