@@ -5,13 +5,24 @@ import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Auth } from 'aws-amplify';
-
+import { Amplify } from 'aws-amplify';
 
 export function SignUpPage() {
     const { control, handleSubmit, formState: { errors } } = useForm();
     const navigation = useNavigation();
-    
+    const [isSignedIn, setIsSignedIn] = useState(false);
+
+    const signInWithWebFB = async () => {
+        try {
+          console.log("Before calling Auth.signInWithWebUI()");
+          const signInResult = await Amplify.Auth.federatedSignIn({ provider: 'Facebook' });
+          console.log("After calling Auth.signInWithWebUI(), signInResult: ", signInResult);
+          setIsSignedIn(signInResult.isSignedIn);
+        } catch (error) {
+          console.log(error);
+        }
+      };  
+      
     async function onSubmit(data) {
         try {
             await signUp(data.email, data.password);
@@ -106,7 +117,10 @@ export function SignUpPage() {
                         style={styles.text}
                         numberOfLines={1}>Sign Up with Google</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.container_image}>
+
+                <TouchableOpacity 
+                  style={styles.container_image} 
+                  onPress={signInWithWebFB}>
                     <Image
                         style={styles.image}
                         source={require('../assets/images/facebook.png')} />
@@ -114,6 +128,7 @@ export function SignUpPage() {
                         style={styles.text}
                         numberOfLines={1}>Sign Up with Facebook</Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity style={styles.container_image}>
                     <Image
                         style={styles.image}
