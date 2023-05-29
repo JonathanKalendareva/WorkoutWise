@@ -5,6 +5,7 @@ import { Auth } from 'aws-amplify';
 
 export function ForgetPassword()
 {
+    const navigation = useNavigation();
     const onSendPressed = async data =>
     { 
         await Auth.forgotPassword(data.username)
