@@ -2,12 +2,16 @@ import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Auth } from 'aws-amplify';
+import { useNavigation } from '@react-navigation/native';
 
 export function NewPasswordScreen() {
+
     const navigation = useNavigation();
-    const onSendPressed = async data =>
+    const { control, handleSubmit } = useForm();
+
+    const onVerifcationPressed = async data =>
     { 
-        await Auth.forgotPassword(data.username)
+        Auth.forgotPasswordSubmit(username, code, new_password)
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
     }
@@ -27,9 +31,33 @@ export function NewPasswordScreen() {
                     }
                 }}
             />
+    <CustomInput
+                name="Code"
+                placeholder={"code"}
+                control={control}
+                rules={{
+                    required: 'Code is required',
+                    pattern: {
+                        value: /^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/,
+                        message: 'Invalid Code'
+                    }
+                }}
+            />
+    <CustomInput
+                name="new_password"
+                placeholder={"Enter a new password"}
+                control={control}
+                rules={{
+                    required: 'New Password is required',
+                    pattern: {
+                        value: /^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/,
+                        message: 'Invalid New Password'
+                    }
+                }}
+            />
     <CustomButton
                 text="Send"
-                onPress={handleSubmit(onSendPressed)} />
+                onPress={handleSubmit(onVerifcationPressed)} />
         
     </SafeAreaView>
     

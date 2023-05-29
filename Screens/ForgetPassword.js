@@ -3,15 +3,20 @@ import CustomButton from '../src/components/CustomButton';
 import { Auth } from 'aws-amplify';
 import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
+import { useNavigation } from '@react-navigation/native';
+import { NewPasswordScreen } from './NewPasswordScreen';
 
 export function ForgetPassword() {
     const { control, handleSubmit } = useForm();
+    const navigation = useNavigation();
     
     const onSendPressed = async data =>
     { 
         await Auth.forgotPassword(data.email)
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
+        console.log("yo we here");
+        navigation.navigate(NewPasswordScreen)
     }
 
     return (
