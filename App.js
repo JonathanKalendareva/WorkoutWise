@@ -5,6 +5,8 @@ import { LandingPage } from './Screens/LandingPage';
 import { SignUpPage } from './Screens/SignUpPage';
 import { LoginPage } from './Screens/LoginPage';
 import { ConfirmationPage } from './Screens/ConfirmationPage';
+import { ForgetPassword } from './Screens/ForgetPassword';
+import { NewPasswordScreen } from './Screens/NewPasswordScreen';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native'
 import awsconfig from './src/aws-exports.js'
@@ -55,14 +57,14 @@ export default function App() {
             title: 'Confirmation Page',
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="ForgetPassword"
           component={ForgetPassword}
           options={{
             title: 'Forget Password',
           }}
-          />
-          <Stack.Screen
+        />
+        <Stack.Screen
           name="NewPasswordScreen"
           component={NewPasswordScreen}
           options={{

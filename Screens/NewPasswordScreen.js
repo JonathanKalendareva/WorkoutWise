@@ -3,19 +3,17 @@ import CustomButton from '../src/components/CustomButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Auth } from 'aws-amplify';
 
-export function NewPasswordScreen()
-{
+export function NewPasswordScreen() {
     const navigation = useNavigation();
     const onSendPressed = async data =>
     { 
         await Auth.forgotPassword(data.username)
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
-}
-}
+    }
 
-return(
-     <SafeAreaView>
+  return (
+    <SafeAreaView>
     <View style={{ marginTop: 40 }} />
     <CustomInput
                 name="email"
@@ -36,3 +34,5 @@ return(
     </SafeAreaView>
     
 )
+
+}
