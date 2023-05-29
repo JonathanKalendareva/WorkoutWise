@@ -17,8 +17,8 @@ export function ConfirmationPage({route}) {
   /* function for button functionality */
   const onConfirmPressed = async (formData) => {
     try {
-      const { username, code } = formData;
-      const response = await Auth.confirmSignUp(username, code);
+      const { email, code } = formData;
+      const response = await Auth.confirmSignUp(email, code);
       console.log(response);
     } catch (e) {
       Alert.alert("Oops", e.message);

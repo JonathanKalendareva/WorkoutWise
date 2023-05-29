@@ -6,6 +6,7 @@ import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Amplify } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
 export function SignUpPage() {
     const { control, handleSubmit, formState: { errors } } = useForm();
