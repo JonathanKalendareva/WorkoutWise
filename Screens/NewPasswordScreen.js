@@ -1,8 +1,9 @@
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Auth } from 'aws-amplify';
 import { useNavigation } from '@react-navigation/native';
+import { useForm, Controller } from 'react-hook-form'
+import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
 
 export function NewPasswordScreen() {
 
