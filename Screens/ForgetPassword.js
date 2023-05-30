@@ -16,7 +16,7 @@ export function ForgetPassword() {
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
         console.log("yo we here");
-        navigation.navigate(NewPasswordScreen)
+        navigation.navigate('NewPasswordScreen')
     }
 
     return (
