@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LandingPage } from './Screens/LandingPage';
@@ -7,8 +6,8 @@ import { LoginPage } from './Screens/LoginPage';
 import { ConfirmationPage } from './Screens/ConfirmationPage';
 import { ForgetPassword } from './Screens/ForgetPassword';
 import { NewPasswordScreen } from './Screens/NewPasswordScreen';
+import { HomePage } from './Screens/HomePage';
 import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from 'aws-amplify-react-native'
 import awsconfig from './src/aws-exports.js'
 
 Amplify.configure(awsconfig);
@@ -69,6 +68,13 @@ export default function App() {
           component={NewPasswordScreen}
           options={{
             title: 'New Password',
+          }}
+        />
+        <Stack.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{
+            title: 'HomePage',
           }}
         />
       </Stack.Navigator>

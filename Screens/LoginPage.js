@@ -12,12 +12,15 @@ export function LoginPage({ navigation }) {
 
     /* functions for button functionality*/
     const onLogInPressed = (data) => {
-        console.log(data)
+        const { email, password } = data;
+        signIn(email, password);
+
     }
     
-    async function signIn() {
+    async function signIn(email, password) {
   try {
-    const user = await Auth.signIn(username, password);
+    const user = await Auth.signIn(email, password);
+    navigation.navigate('HomePage')
   } catch (error) {
     console.log('error signing in', error);
   }

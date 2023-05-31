@@ -2,21 +2,13 @@ import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { Auth } from 'aws-amplify';
 import { useNavigation } from '@react-navigation/native';
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { StyleSheet, View, SafeAreaView, Dimensions } from 'react-native';
 
-export function NewPasswordScreen({}) {
+export function HomePage() {
 
     const navigation = useNavigation();
     const { control, handleSubmit } = useForm();
-
-    const onVerifcationPressed = async (data) => {
-    const { email, code, new_password } = data;
-
-  Auth.forgotPasswordSubmit(email, code, new_password)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-};
 
 
   return (
@@ -66,7 +58,7 @@ export function NewPasswordScreen({}) {
             />
     <CustomButton
                 text="Send"
-                onPress={handleSubmit(onVerifcationPressed)} />
+                onPress={console.log("we here")} />
         
     </SafeAreaView>
     
