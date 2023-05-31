@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
+import { StyleSheet, SafeAreaView, Alert} from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
 

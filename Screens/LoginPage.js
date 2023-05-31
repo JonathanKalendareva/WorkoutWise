@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
+import { StyleSheet, Text, Image, View, SafeAreaView, TouchableOpacity, Dimensions} from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm, Controller } from 'react-hook-form'

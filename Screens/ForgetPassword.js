@@ -1,10 +1,10 @@
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { Auth } from 'aws-amplify';
-import { StyleSheet, Text, Image, View, SafeAreaView, Alert, TouchableOpacity, Dimensions, PixelRatio, NavigationContainer, TextInput } from 'react-native';
-import { useForm, Controller } from 'react-hook-form'
+import { StyleSheet, View, SafeAreaView, Dimensions,} from 'react-native';
+import { useForm} from 'react-hook-form'
 import { useNavigation } from '@react-navigation/native';
-import { NewPasswordScreen } from './NewPasswordScreen';
+
 
 export function ForgetPassword() {
     const { control, handleSubmit } = useForm();
