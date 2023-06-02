@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, SafeAreaView, Alert} from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
 import { useForm } from 'react-hook-form';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation} from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
 
 

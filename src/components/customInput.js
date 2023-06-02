@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import { Controller } from 'react-hook-form'
 import { Entypo } from "@expo/vector-icons"
 

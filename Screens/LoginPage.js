@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, Image, View, SafeAreaView, TouchableOpacity, Dimensions} from 'react-native';
 import CustomInput from '../src/components/customInput';
 import CustomButton from '../src/components/CustomButton';
