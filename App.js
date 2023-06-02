@@ -9,10 +9,29 @@ import { NewPasswordScreen } from './Screens/NewPasswordScreen';
 import { HomePage } from './Screens/HomePage';
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports.js'
+import { useEffect } from 'react';
 
 Amplify.configure(awsconfig);
 
 const Stack = createNativeStackNavigator();
+const Navigation = () => {
+
+  try{
+    const authUser = await AuthenticatorAssertionResponse.currentAuthenticatedUser({bypassCache: true});
+  }catch(e)
+  {
+    setUser(null);
+  }
+
+  setUser(authUser);
+
+  useEffect(() => {
+  checkUser();
+  } , [])
+  
+  if(user == undefined)
+  {}
+
 
 export default function App() {
   return (
